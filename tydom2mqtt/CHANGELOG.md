@@ -2,6 +2,13 @@
 
 Evolutions notables de l'add-on tydom2mqtt.
 
+## 1.1.3
+
+- FIX : l'add-on tournait en utilisateur non-root, ce qui empechait la
+  lecture de `/data/options.json` (ecrit en root par le Supervisor) et
+  provoquait un crash au demarrage (PermissionError [Errno 13]). L'image
+  tourne de nouveau en root.
+
 ## 1.1.2
 
 - BREAKING : l'architecture `i386` n'est plus supportee. L'image du fork
