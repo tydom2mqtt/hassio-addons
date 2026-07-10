@@ -3,7 +3,7 @@
 ########## GENERAL SETTINGS ######################################################################################################
 name: tydom2mqtt
 image: ghcr.io/skandass/tydom2mqtt
-version: 1.1.1
+version: 1.1.2
 slug: tydom2mqtt
 description: Deltadore Tydom to MQTT Bridge
 arch:
