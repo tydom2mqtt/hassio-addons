@@ -1,0 +1,48 @@
+name: Bump add-on version
+# Met a jour la version de l'add-on tydom2mqtt (config.yml) et le CHANGELOG,
+# puis ouvre une pull request. Declenchement manuel depuis l'onglet Actions.
+#
+# Utilisation : Actions -> "Bump add-on version" -> Run workflow
+#   version : la nouvelle version d'image publiee (ex. 1.1.2)
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Nouvelle version de l'image (ex. 1.1.2)"
+        required: true
+        type: string
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  bump:
+    name: Bump ${{ inputs.version }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Update config.yml
+        run: |
+          set -euo pipefail
+          sed -i -E "s/^version: .*/version: ${{ inputs.version }}/" tydom2mqtt/config.yml
+          grep -q "^version: ${{ inputs.version }}$" tydom2mqtt/config.yml
+      - name: Prepend CHANGELOG entry
+        run: |
+          set -euo pipefail
+          today="$(date +%Y-%m-%d)"
+          entry="## ${{ inputs.version }}\n\n- Image \`ghcr.io/skandass/tydom2mqtt:${{ inputs.version }}\` (${today}).\n"
+          awk -v e="$entry" 'NR==1{print; print ""; printf e; next} 1' \
+            tydom2mqtt/CHANGELOG.md > tydom2mqtt/CHANGELOG.md.tmp
+          mv tydom2mqtt/CHANGELOG.md.tmp tydom2mqtt/CHANGELOG.md
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(tydom2mqtt): bump add-on to ${{ inputs.version }}"
+          branch: "bump/addon-${{ inputs.version }}"
+          delete-branch: true
+          title: "chore(tydom2mqtt): bump add-on to ${{ inputs.version }}"
+          body: |
+            Bump automatique de l'add-on tydom2mqtt vers ${{ inputs.version }}.
+            - tydom2mqtt/config.yml : version: ${{ inputs.version }}
+            - tydom2mqtt/CHANGELOG.md : nouvelle entree
+            Image : ghcr.io/skandass/tydom2mqtt:${{ inputs.version }}
