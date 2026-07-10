@@ -1,5 +1,5 @@
 ---
 
 name: tydom2mqtt add-ons
-url: https://github.com/tydom2mqtt/hassio-addons.git
-maintainer: tydom2mqtt
+url: https://github.com/skandass/hassio-addons
+maintainer: skandass
