@@ -3,37 +3,58 @@
 configuration:
   TYDOM_MAC:
     name: Tydom MAC address
-    description: Tydom MAC address (starting with 001A25...)
+    description: Tydom MAC address, in uppercase (starting with 001A25...)
   TYDOM_IP:
     name: Tydom IP address
-    description: Tydom IP address (optional, mediation.tydom.com by default)
+    description: Tydom local IP address (optional, mediation.tydom.com by default to go through the Delta Dore cloud)
   TYDOM_PASSWORD:
     name: Tydom password
-    description: Tydom password
+    description: Tydom gateway password (ignored when the Delta Dore login and password are set)
+  DELTADORE_LOGIN:
+    name: Delta Dore login
+    description: Tydom app account e-mail, used to fetch the Tydom password automatically (optional)
+  DELTADORE_PASSWORD:
+    name: Delta Dore password
+    description: Tydom app account password (optional)
   TYDOM_ALARM_PIN:
-    name: Tydom alarm pin
-    description: Tydom alarm pin (optional)
+    name: Tydom alarm PIN
+    description: Tydom alarm PIN, needed to arm / disarm the alarm (optional)
   TYDOM_ALARM_HOME_ZONE:
     name: Tydom alarm home zone
-    description: Tydom alarm home zone (optional)
+    description: Zone armed by the "Arm home" action (optional, 1 by default)
   TYDOM_ALARM_NIGHT_ZONE:
     name: Tydom alarm night zone
-    description: Tydom night home zone (optional)
+    description: Zone armed by the "Arm night" action (optional, 2 by default)
+  TYDOM_POLLING_INTERVAL:
+    name: Polling interval
+    description: Interval in seconds between two polls of the Tydom devices (optional, 300 by default)
+  TYDOM_CONFIG_REFRESH_INTERVAL:
+    name: Configuration refresh interval
+    description: Interval in seconds between two reads of the Tydom configuration, so devices added to the gateway show up without restarting (optional, 3600 by default, 0 disables it)
   MQTT_HOST:
-    name: Mqtt host
-    description: Mqtt host (optional, localhost by default)
+    name: MQTT host
+    description: MQTT broker host (optional, core-mosquitto for the Mosquitto broker add-on)
   MQTT_USER:
-    name: Mqtt user name
-    description: Mqtt user name (optional, only when authentication is enabled)
+    name: MQTT user name
+    description: MQTT user name (optional, only when authentication is enabled)
   MQTT_PASSWORD:
-    name: Mqtt password
-    description: Mqtt password (optional, only when authentication is enabled)
+    name: MQTT password
+    description: MQTT password (optional, only when authentication is enabled)
   MQTT_PORT:
-    name: Mqtt port
-    description: Mqtt port (optional, 1883 by default)
+    name: MQTT port
+    description: MQTT broker port (optional, 1883 by default)
   MQTT_SSL:
-    name: Mqtt SSL enabled?
-    description: Is SSL enabled othe MQTT broker? (optional, by default false)
-  log_level:
+    name: MQTT SSL enabled?
+    description: Is SSL enabled on the MQTT broker? (optional, false by default)
+  THERMOSTAT_CUSTOM_PRESETS:
+    name: Thermostat custom presets
+    description: 'JSON map of presets and their setpoint, e.g. {"ECO": "17", "COMFORT": "20"} (optional)'
+  THERMOSTAT_COOL_MODE_TEMP_DEFAULT:
+    name: Default cooling setpoint
+    description: Setpoint applied when switching a thermostat to cooling mode (optional, 26 by default)
+  THERMOSTAT_HEAT_MODE_TEMP_DEFAULT:
+    name: Default heating setpoint
+    description: Setpoint applied when switching a thermostat to heating mode (optional, 16 by default)
+  LOG_LEVEL:
     name: Log level
-    description: Log level (optional, by default info)
+    description: Log level (optional, INFO by default)

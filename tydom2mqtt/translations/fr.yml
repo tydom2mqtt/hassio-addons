@@ -3,37 +3,58 @@
 configuration:
   TYDOM_MAC:
     name: Adresse MAC du Tydom
-    description: Adresse MAC du Tydom (commence par 001A25...)
+    description: Adresse MAC du Tydom, en majuscules (commence par 001A25...)
   TYDOM_IP:
     name: Adresse IP du Tydom
-    description: Adresse IP du Tydom (optionnel, mediation.tydom.com par défaut)
+    description: Adresse IP locale du Tydom (optionnel, mediation.tydom.com par défaut pour passer par le cloud Delta Dore)
   TYDOM_PASSWORD:
     name: Mot de passe du Tydom
-    description: Mot de passe du Tydom
+    description: Mot de passe de la passerelle Tydom (ignoré si l'identifiant et le mot de passe Delta Dore sont renseignés)
+  DELTADORE_LOGIN:
+    name: Identifiant Delta Dore
+    description: E-mail du compte de l'application Tydom, pour récupérer automatiquement le mot de passe du Tydom (optionnel)
+  DELTADORE_PASSWORD:
+    name: Mot de passe Delta Dore
+    description: Mot de passe du compte de l'application Tydom (optionnel)
   TYDOM_ALARM_PIN:
     name: Code de l'alarme du Tydom
-    description: Code de l'alarme du Tydom (optionnel)
+    description: Code de l'alarme du Tydom, nécessaire pour l'armer / la désarmer (optionnel)
   TYDOM_ALARM_HOME_ZONE:
     name: Zone maison pour l'alarme du Tydom
-    description: Zone maison pour l'alarme du Tydom (optionnel)
+    description: Zone armée par l'action « Armer (maison) » (optionnel, 1 par défaut)
   TYDOM_ALARM_NIGHT_ZONE:
     name: Zone nuit pour l'alarme du Tydom
-    description: Zone nuit pour l'alarme du Tydom (optionnel)
+    description: Zone armée par l'action « Armer (nuit) » (optionnel, 2 par défaut)
+  TYDOM_POLLING_INTERVAL:
+    name: Intervalle d'interrogation
+    description: Intervalle en secondes entre deux interrogations des appareils Tydom (optionnel, 300 par défaut)
+  TYDOM_CONFIG_REFRESH_INTERVAL:
+    name: Intervalle de relecture de la configuration
+    description: Intervalle en secondes entre deux relectures de la configuration du Tydom, pour faire apparaître les appareils ajoutés sans redémarrer (optionnel, 3600 par défaut, 0 pour désactiver)
   MQTT_HOST:
     name: Adresse du serveur MQTT
-    description: Adresse du serveur MQTT (optionnel, localhost par défaut)
+    description: Adresse du serveur MQTT (optionnel, core-mosquitto pour le module Mosquitto broker)
   MQTT_USER:
     name: Nom d'utilisateur du serveur MQTT
     description: Nom d'utilisateur du serveur MQTT (optionnel, uniquement si l'authentification est activée)
   MQTT_PASSWORD:
-    name: Mot de passe su serveur MQTT
+    name: Mot de passe du serveur MQTT
     description: Mot de passe du serveur MQTT (optionnel, uniquement si l'authentification est activée)
   MQTT_PORT:
     name: Port du serveur MQTT
     description: Port du serveur MQTT (optionnel, 1883 par défaut)
   MQTT_SSL:
     name: SSL activé sur le serveur MQTT ?
-    description: true si le SSL est activé sur le serveur MQTT (optionnel, par défaut false)
-  log_level:
+    description: Activer si le SSL est activé sur le serveur MQTT (optionnel, désactivé par défaut)
+  THERMOSTAT_CUSTOM_PRESETS:
+    name: Préréglages personnalisés des thermostats
+    description: 'Dictionnaire JSON des préréglages et de leur consigne, ex. {"ECO": "17", "COMFORT": "20"} (optionnel)'
+  THERMOSTAT_COOL_MODE_TEMP_DEFAULT:
+    name: Consigne par défaut en mode froid
+    description: Consigne appliquée au passage d'un thermostat en mode froid (optionnel, 26 par défaut)
+  THERMOSTAT_HEAT_MODE_TEMP_DEFAULT:
+    name: Consigne par défaut en mode chaud
+    description: Consigne appliquée au passage d'un thermostat en mode chaud (optionnel, 16 par défaut)
+  LOG_LEVEL:
     name: Niveau de log
-    description: Niveau de log (optionnel, par défaut info)
+    description: Niveau de log (optionnel, INFO par défaut)

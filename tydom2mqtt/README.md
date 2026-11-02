@@ -6,16 +6,23 @@ This add-on allows you to easily deploy and integrate [tydom2mqtt](https://tydom
 
 ## How to install the add-on?
 
-### 1. Search for the `tydom2mqtt` add-on and click on the item
+### 1. Add the repository (see [the repository README](../README.md))
 
-### 2. Click on the `Repositories` menu item
+### 2. Search for the `tydom2mqtt` app in the store and click on the item
 
 ### 3. Click on the `Install` button
 
 ### 4. Enable the options `Start on boot` and `Watchdog` (and optionally `Auto update` if you wish)
 
-### 5. Go to the add-on `Configuration` tab and configure the add-on
+### 5. Go to the `Configuration` tab and configure the app
 
-### 6. Go to the add-on `Info` tab and click on the `Start` button
+With the official **Mosquitto broker** app, set `MQTT_HOST` to `core-mosquitto` and fill `MQTT_USER` / `MQTT_PASSWORD`
+with a Home-Assistant user dedicated to MQTT.
 
-### 7. Go to the add-on `Log` tab and check that the add-on is working as expected
+If you don't know your Tydom password, fill `DELTADORE_LOGIN` / `DELTADORE_PASSWORD` (your Tydom app account) instead.
+
+### 6. Go to the `Info` tab and click on the `Start` button
+
+### 7. Go to the `Log` tab and check that the app is working as expected
+
+See the [full documentation](https://tydom2mqtt.github.io/tydom2mqtt/#/hass/) for troubleshooting.

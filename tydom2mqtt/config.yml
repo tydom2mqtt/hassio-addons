@@ -3,16 +3,14 @@
 ########## GENERAL SETTINGS ######################################################################################################
 name: tydom2mqtt
 image: ghcr.io/tydom2mqtt/tydom2mqtt
-version: 3.6.0
+version: 3.7.0
 slug: tydom2mqtt
 description: Deltadore Tydom to MQTT Bridge
+# 32-bit architectures (armhf, armv7, i386) are no longer supported by Home Assistant since 2025.12
 arch:
-  - armhf
-  - armv7
   - aarch64
   - amd64
-  - i386
-url: https://github.com/tydom2mqtt/hassio-addons.git
+url: https://github.com/tydom2mqtt/tydom2mqtt
 services:
   - mqtt:need
 
@@ -43,12 +41,14 @@ schema:
   TYDOM_ALARM_HOME_ZONE: int?
   TYDOM_ALARM_NIGHT_ZONE: int?
   TYDOM_POLLING_INTERVAL: int?
+  TYDOM_CONFIG_REFRESH_INTERVAL: int?
   MQTT_HOST: str?
   MQTT_USER: str?
   MQTT_PASSWORD: password?
   MQTT_PORT: port?
   MQTT_SSL: bool?
+  THERMOSTAT_CUSTOM_PRESETS: str?
   THERMOSTAT_COOL_MODE_TEMP_DEFAULT: int?
-  THERMOSTAT_HEAT_MODE_TEMP_DEFAULT: int?  
+  THERMOSTAT_HEAT_MODE_TEMP_DEFAULT: int?
   DELTADORE_LOGIN: str?
   DELTADORE_PASSWORD: password?

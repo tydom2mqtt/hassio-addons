@@ -8,11 +8,15 @@ tydom2mqtt hass.io add-ons repository.
 
 ### How to add this repository to Home-Assistant?
 
-#### 1. Go to the ̀Supervisor` section of your Home-Assistant instance.
+[![Add repository to my Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Ftydom2mqtt%2Fhassio-addons)
 
-#### 2. Click on the `Repositories` menu item
+Or manually:
 
-#### 3. Add the git http url ([https://github.com/tydom2mqtt/hassio-addons.git](https://github.com/tydom2mqtt/hassio-addons.git))
+#### 1. Go to **Settings** -> **Apps** (formerly **Add-ons**) -> **App store** of your Home-Assistant instance.
+
+#### 2. Click on the **⋮** menu (top right), then on **Repositories**
+
+#### 3. Add the git http url ([https://github.com/tydom2mqtt/hassio-addons](https://github.com/tydom2mqtt/hassio-addons))
 
 ### How to install an add-on?
 
